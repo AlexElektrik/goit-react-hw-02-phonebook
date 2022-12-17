@@ -36,11 +36,9 @@ export class App extends Component {
   };
 
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
     const contactFilter = contacts.filter(contact =>
-      contact.name
-        .toLocaleLowerCase()
-        .includes(this.state.filter.toLocaleLowerCase())
+      contact.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
     );
 
     return (
@@ -49,7 +47,7 @@ export class App extends Component {
         <ContactForm onSubmit={this.addContact} contacts={contacts} />
         <h2>Contacts</h2>
         <h3>Find contact by name</h3>
-        <ContactFilter value={this.state.filter} onChange={this.handelChange} />
+        <ContactFilter value={filter} onChange={this.handelChange} />
         <ContactList contacts={contactFilter} onDelete={this.deleteContact} />
         <GlobalStyle />
       </Container>
