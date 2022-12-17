@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ContactList from './ContactList';
-// import ContactForm from './ContactForm';
+import ContactForm from './ContactForm';
 import ContactFilter from './ContactFilter';
 import { nanoid } from 'nanoid';
 import { GlobalStyle } from './GlobalStyle';
@@ -37,7 +37,7 @@ export class App extends Component {
 
   render() {
     const { contacts } = this.state;
-    const contactFilter = this.state.contacts.filter(contact =>
+    const contactFilter = contacts.filter(contact =>
       contact.name
         .toLocaleLowerCase()
         .includes(this.state.filter.toLocaleLowerCase())
@@ -46,7 +46,7 @@ export class App extends Component {
     return (
       <Container>
         <h2>Phonebook</h2>
-        {/* <ContactForm onSubmit={this.addContact} contacts={contacts} /> */}
+        <ContactForm onSubmit={this.addContact} contacts={contacts} />
         <h2>Contacts</h2>
         <h3>Find contact by name</h3>
         <ContactFilter value={this.state.filter} onChange={this.handelChange} />
