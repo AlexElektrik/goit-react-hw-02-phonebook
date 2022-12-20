@@ -15,7 +15,7 @@ class ContactForm extends Component {
   };
 
   saveNewContact = event => {
-    const { name, number } = event.target.elements;
+    const { name, number } = this.state;
     if (
       !this.props.contacts.find(
         contact =>
@@ -23,7 +23,7 @@ class ContactForm extends Component {
           event.target.name.value.toLocaleLowerCase()
       )
     ) {
-      this.props.onSubmit(name.value, number.value);
+      this.props.onSubmit(name, number);
       this.resetState();
     } else {
       alert(`${event.target.name.value} is already in contacts`);
