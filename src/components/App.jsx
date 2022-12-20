@@ -5,6 +5,7 @@ import ContactFilter from './ContactFilter';
 import { nanoid } from 'nanoid';
 import { GlobalStyle } from './GlobalStyle';
 import { Container } from './App.styled';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
   state = {
@@ -14,7 +15,6 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-
     filter: '',
   };
 
@@ -47,10 +47,17 @@ export class App extends Component {
         <ContactForm onSubmit={this.addContact} contacts={contacts} />
         <h2>Contacts</h2>
         <h3>Find contact by name</h3>
-        <ContactFilter value={filter} onChange={this.handelChange} />
+        <ContactFilter filter={filter} onChange={this.handelChange} />
         <ContactList contacts={contactFilter} onDelete={this.deleteContact} />
         <GlobalStyle />
       </Container>
     );
   }
 }
+
+App.propTypes = {
+  state: PropTypes.shape({
+    filter: PropTypes.string,
+    contacts: PropTypes.array.isRequired,
+  }),
+};
