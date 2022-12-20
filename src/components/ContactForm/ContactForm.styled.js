@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import { Form } from 'formik';
-
-export const CreateContactForm = styled(Form)`
+export const CreateContactForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 15px;
